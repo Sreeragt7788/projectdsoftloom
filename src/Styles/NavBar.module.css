@@ -1,0 +1,79 @@
+.navSection {
+  height: 60px;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Search */
+.navSearch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.navSearch input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 180px;
+  font-size: 14px;
+}
+
+.navSearch button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navSearch svg {
+  width: 18px;
+  height: 18px;
+  color: #374151;
+}
+
+/* Links */
+.linkSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.linkSection a {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.linkSection a:hover {
+  color: #2563eb;
+}
+
+/* Cart */
+.cartLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cartLink svg {
+  width: 18px;
+  height: 18px;
+}
