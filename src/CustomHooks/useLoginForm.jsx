@@ -16,14 +16,44 @@ export function useLoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginData);
+   
+    const finalValidation = loginValidation(loginData)
+
+    if(finalValidation !== true){
+        alert(finalValidation)
+        return
+    }
+    
+
+     console.log(loginData);
 
     // reset
     setLoginData({
       email: "",
       password: "",
     });
+
+    
   };
+
+  const loginValidation = (loginData) => {
+    //EMPTY EMAIL
+    if (!loginData.email) return "Email is required";
+
+    //here @gmail.com must
+    if (!loginData.email.endsWith("@gmail.com"))
+      return "enter must be a gmail address";
+
+    //go for password
+    if (!loginData.password) return "Password is required";
+    
+
+    // if (loginData.password !== loginData.password)
+    //   return "password is incorrect";
+
+    return true;
+  };
+
 
   return {
     loginData,

@@ -68,7 +68,6 @@ function Login() {
                   onChange={handleChange}
                   placeholder="Enter your email"
                   className="w-full px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm outline-none border border-white/30 focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all shadow-lg text-lg"
-                  required
                   autoComplete="email"
                 />
               </div>
@@ -84,7 +83,6 @@ function Login() {
                   onChange={handleChange}
                   placeholder="•••••••••"
                   className="w-full px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm outline-none border border-white/30 focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all shadow-lg text-lg"
-                  required
                   autoComplete="current-password"
                 />
               </div>
