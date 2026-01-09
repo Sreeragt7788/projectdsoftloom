@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
         return prev.map((product) =>
           product.id === item.id
             ? { ...product, quantity: product.quantity + 1 }
-            : p
+            : product
         );
       }
 
