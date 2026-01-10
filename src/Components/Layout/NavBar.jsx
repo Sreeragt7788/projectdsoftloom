@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Styles from "../../Styles/NavBar.module.css";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../../Context/SearchContext";
 
 function NavBar() {
+  const {search , setSearch}=useContext(SearchContext)
   return (
     <nav className={Styles.navSection}>
       
@@ -13,7 +15,7 @@ function NavBar() {
 
       {/* Search */}
       <div className={Styles.navSearch}>
-        <input type="text" placeholder="Search products..." />
+        <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Search products..." />
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -10,12 +10,13 @@ import CartPage from "./Pages/Cart";
 import OrderSuccess from "./Pages/OrderSuccess";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import { SearchProvider } from "./Context/SearchContext";
 
 
 function App() {
   return (
     <BrowserRouter>
-      
+      <SearchProvider>
         <CartProvider>
 
           <NavBar />
@@ -34,7 +35,7 @@ function App() {
           <Footer />
 
         </CartProvider>
-      
+      </SearchProvider>
     </BrowserRouter>
   );
 }

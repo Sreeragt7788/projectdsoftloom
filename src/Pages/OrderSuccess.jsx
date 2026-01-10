@@ -5,7 +5,7 @@ function OrderSuccess() {
   const navigate = useNavigate();
 
   function handleToReturn() {
-    navigate("/");
+    navigate("/products");
   }
 
   return (

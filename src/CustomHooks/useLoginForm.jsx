@@ -17,7 +17,7 @@ export function useLoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
    
-    const finalValidation = loginValidation(loginData)
+    const finalValidation = handleLoginValidation(loginData)
 
     if(finalValidation !== true){
         alert(finalValidation)
@@ -36,7 +36,7 @@ export function useLoginForm() {
     
   };
 
-  const loginValidation = (loginData) => {
+  const handleLoginValidation = (loginData) => {
     //EMPTY EMAIL
     if (!loginData.email) return "Email is required";
 
