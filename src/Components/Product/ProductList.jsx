@@ -48,12 +48,12 @@ function ProductList() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  /* ---------------- FILTER LOGIC ---------------- */
+  /* FILTERING PRODUCTS */
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  /* ---------------- UI STATES ---------------- */
+  /*  UI STATES  */
 
   if (loading) {
     return (
