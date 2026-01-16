@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useLoginForm } from "../CustomHooks/useLoginForm";
 import { Link } from "react-router-dom";
+
 
 function Login() {
   const { loginData, handleChange, handleSubmit } = useLoginForm();
   const emailRef = useRef(null);
+
 
   
   useEffect(() => {
@@ -97,7 +99,7 @@ function Login() {
               <p className="text-center text-sm text-white/90 pt-4 drop-shadow-md">
                 New customer?{' '}
                 <Link 
-                  to="/registerForm" 
+                  to="/registerpage" 
                   className="underline font-semibold hover:text-indigo-200 transition-colors"
                 >
                   Create Account

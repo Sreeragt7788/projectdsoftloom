@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { RegisterContext } from "../Context/RegisterContext";
+import { useNavigate } from "react-router-dom";
 
 export function useRegisterForm() {
+  const { register } = useContext(RegisterContext)
+  const navigate = useNavigate()
   const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
@@ -58,6 +62,7 @@ export function useRegisterForm() {
         alert(registerValidation)
         return;
     }
+    register(registerData)
 
     console.log(registerData);
     setRegisterData({
@@ -66,6 +71,8 @@ export function useRegisterForm() {
       password: "",
       confirmPassword: "",
     });
+    
+    navigate("/loginpage")
   };
 
   return { registerData, handleChange, handleSubmit };

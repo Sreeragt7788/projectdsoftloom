@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginContext } from "../Context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 export function useLoginForm() {
+  const { login } =useContext(LoginContext)
+  const navigate=useNavigate()
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -24,8 +29,8 @@ export function useLoginForm() {
         return
     }
     
-
-     console.log(loginData);
+    login(loginData)
+    
 
     // reset
     setLoginData({
@@ -33,6 +38,7 @@ export function useLoginForm() {
       password: "",
     });
 
+    navigate("/products")
     
   };
 
@@ -46,10 +52,6 @@ export function useLoginForm() {
 
     //go for password
     if (!loginData.password) return "Password is required";
-    
-
-    // if (loginData.password !== loginData.password)
-    //   return "password is incorrect";
 
     return true;
   };

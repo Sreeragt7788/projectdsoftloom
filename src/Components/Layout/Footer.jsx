@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 mt-16" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* BRAND */}
+        
         <div>
           <h2 className="text-2xl font-bold text-white mb-3">ShopEasy</h2>
           <p className="text-sm text-gray-400">
@@ -62,10 +62,10 @@ function Footer() {
             </a>
           </div>
 
-          {/* 👈 YOUR INDIAN PAYMENT ICONS - Perfect integration */}
+          {/* PAYMENT ICONS */}
           <div className="space-y-3">
             <h4 className="text-lg font-semibold text-white">We Accept</h4>
-            <div className="flex gap-4">  {/* 👈 Your exact layout + shrink-0 */}
+            <div className="flex gap-4">  
               <SiGooglepay
                 className="w-8 h-8 text-gray-400 hover:text-blue-500 transition-colors shrink-0"
                 aria-label="Google Pay"
@@ -87,7 +87,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* BOTTOM BAR */}
+      {/* BOTTOM Section */}
       <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400 max-w-7xl mx-auto px-6">
         © {new Date().getFullYear()} ShopEasy. All Rights Reserved.
       </div>

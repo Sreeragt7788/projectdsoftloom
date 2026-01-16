@@ -2,53 +2,54 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 
-
 function ProductCard({ product }) {
-
-  const {addToCart}=useContext(CartContext)
-
+  const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   return (
-    <div className="w-62.5 bg-white border rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+    <div className="w-72 bg-white border border-gray-500 rounded-3xl transition-all duration-300 group overflow-hidden flex flex-col">
       
-      
-      <div className="h-40 bg-gray-100 flex items-center justify-center">
+      {/* Image Area */}
+      <div className="h-44 bg-gray-50 flex items-center justify-center relative">
+        <span className="absolute top-4 left-4 bg-red-500 text-white text-[9px] font-black px-2 py-1 rounded-lg uppercase tracking-widest z-10">
+          {product.discountPercentage}% OFF
+        </span>
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="h-full object-cover hover:scale-105 transition duration-300"
+          className="h-36 object-contain group-hover:scale-105 transition duration-500"
         />
       </div>
 
-      
-      <div className="p-4">
-        <h3 className="font-semibold text-lg line-clamp-1">
-          {product.title}
-        </h3>
-
-        <p className="text-sm text-gray-600 mt-1 line-clamp-2">
-          {product.description}
-        </p>
-
-        <p className="font-bold text-green-600 text-lg mt-2">
-          ₹ {product.price}
-        </p>
-
+      {/* Info Area */}
+      <div className="p-6 flex flex-col grow">
+        <div className="flex justify-between items-start mb-2">
+          <p className="text-[10px] text-blue-600 font-black uppercase tracking-widest leading-none">{product.brand}</p>
+          <div className="text-[10px] font-bold text-yellow-500">★ {product.rating}</div>
+        </div>
         
-        <div className="flex gap-2 mt-4">
+        <h3 className="font-bold text-gray-900 text-md truncate mb-2">{product.title}</h3>
+        
+        <div className="mb-6">
+          <p className="text-2xl font-black text-gray-900">₹{product.price.toLocaleString('en-IN')}</p>
+          <p className={`text-[9px] font-bold mt-1 uppercase tracking-tighter ${product.stock < 10 ? 'text-orange-500' : 'text-green-600'}`}>
+            {product.stock < 10 ? 'Limited Stock' : product.availabilityStatus}
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-2 mt-auto">
           <button
             onClick={() => navigate(`/product/${product.id}`)}
-            className="flex-1 text-sm py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition"
+            className="flex-1 text-[10px] font-bold py-3 bg-emerald-700 border border-gray-100 rounded-xl transition uppercase tracking-widest text-white"
           >
-            View
+            Details
           </button>
-
           <button
             onClick={() => addToCart(product)}
-            className="flex-1 text-sm py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+            className="flex-1 text-[10px] font-bold py-3 bg-orange-600 text-white rounded-xl transition uppercase tracking-widest shadow-lg shadow-blue-50"
           >
-            Add to Cart
+            checkout
           </button>
         </div>
       </div>

@@ -1,9 +1,25 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  //initialize sat  from localStorage (already product saved in localStorage so here NO API call)
+  const [cart, setCart] = useState(() => {
+  try {
+    const savedCart = localStorage.getItem("itemsInCart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  } catch (error) {
+    console.error("Invalid cart data in localStorage");
+    localStorage.removeItem("itemsInCart");
+    return [];
+  }
+});
+
+
+  useEffect(()=>{
+    localStorage.setItem('itemsInCart',JSON.stringify(cart))
+  },[cart])
 
   
   function addToCart(item) {
