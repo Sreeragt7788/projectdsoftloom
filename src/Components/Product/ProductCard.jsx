@@ -41,15 +41,15 @@ function ProductCard({ product }) {
         <div className="flex gap-2 mt-auto">
           <button
             onClick={() => navigate(`/product/${product.id}`)}
-            className="flex-1 text-[10px] font-bold py-3 bg-emerald-700 border border-gray-100 rounded-xl transition uppercase tracking-widest text-white"
+            className="flex-1 text-[10px] font-bold py-3 bg-gray-500 border border-gray-100 rounded-xl transition uppercase tracking-widest text-white"
           >
             Details
           </button>
           <button
             onClick={() => addToCart(product)}
-            className="flex-1 text-[10px] font-bold py-3 bg-orange-600 text-white rounded-xl transition uppercase tracking-widest shadow-lg shadow-blue-50"
+            className="flex-1 text-[10px] font-bold py-3 bg-orange-400 text-white rounded-xl transition uppercase tracking-widest shadow-lg shadow-blue-50"
           >
-            checkout
+            Add to Cart
           </button>
         </div>
       </div>
