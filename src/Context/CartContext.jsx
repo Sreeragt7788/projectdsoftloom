@@ -37,6 +37,11 @@ export function CartProvider({ children }) {
       return [...prev, { ...item, quantity: 1 }];
     });
   }
+  
+  function clearCart(){
+    setCart([])
+    localStorage.removeItem("itemsInCart")
+  }
 
   
   function addItem(id) {
@@ -95,6 +100,7 @@ export function CartProvider({ children }) {
         removeItem,
         total,
         buyNow,
+        clearCart
       }}
     >
       {children}

@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
-import { LoginContext } from '../Context/LoginContext'
-import { Navigate } from 'react-router-dom'
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { LoginContext } from "../Context/LoginContext";
 
-function PrivateRoute({children}) {
- const {loggedInUser} =useContext(LoginContext)
+export default function PrivateRoute({ children }) {
+  const { loggedInUser } = useContext(LoginContext);
 
- if(!loggedInUser){
-    return <Navigate to="/loginpage" />
- }
+  if (!loggedInUser) {
+    return <Navigate to="/loginpage" replace />;
+  }
 
- return children
+  return children;
 }
-
-export default PrivateRoute

@@ -1,8 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { CartContext } from "./CartContext";
 
 export const LoginContext = createContext(null);
 
 export function LoginProvider({ children }) {
+  
+  
   const [loggedInUser, setLoggedInUser] = useState(() => {
     const savedUser = localStorage.getItem("userLogged");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -46,7 +49,9 @@ export function LoginProvider({ children }) {
   };
 
   const logout = () => {
+    
     setLoggedInUser(null);
+    localStorage.removeItem("loggedInUser")
   };
 
   return (
