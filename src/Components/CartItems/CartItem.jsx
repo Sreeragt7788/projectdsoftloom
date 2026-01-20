@@ -29,7 +29,7 @@ function CartItem({ item, remove, add, minus }) {
 
         {/* Mobile price */}
         <div className="sm:hidden mt-2 text-base font-bold text-green-600">
-          ₹ {item.price * item.quantity}
+          $ {item.price * item.quantity}
         </div>
       </div>
 
@@ -61,7 +61,7 @@ function CartItem({ item, remove, add, minus }) {
         <div className="hidden sm:block text-right">
           <p className="text-xs text-gray-500">Item Total</p>
           <p className="text-lg font-bold text-green-600">
-            ₹ {item.price * item.quantity}
+             $ {item.price * item.quantity}
           </p>
         </div>
 

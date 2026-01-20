@@ -40,15 +40,13 @@ function Cart() {
                 <h1 className="text-2xl font-bold text-gray-900">
                   Shopping Cart
                 </h1>
-                <p className="text-sm text-gray-600">
-                  {cart.length} Items
-                </p>
+                <p className="text-sm text-gray-600">{cart.length} Items</p>
               </div>
             </div>
 
             {cart.length > 0 && (
               <div className="text-xl font-bold text-gray-900">
-                ₹{total.toLocaleString("en-IN")}
+                ${total.toLocaleString("en-IN")}
               </div>
             )}
           </div>
@@ -74,14 +72,18 @@ function Cart() {
               />
             ))}
 
-            {/* Place Order */}
             <div className="flex justify-center mt-6">
               <button
                 onClick={handlePlaceOrder}
-                className="bg-gray-900 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-black"
+                className="bg-linear-to-r from-black to-gray-800 
+               text-white px-10 py-4 rounded-2xl 
+               font-semibold text-lg shadow-lg 
+               hover:scale-105 transition-all duration-300"
               >
-                Place Order – ₹
-                {Number((total * 1.18).toFixed(2)).toLocaleString("en-IN")}
+                PLACE ORDER —{" "}
+                <b className="text-green-400">
+                  ${Number((total * 1.18).toFixed(2)).toLocaleString("en-IN")}
+                </b>
               </button>
             </div>
           </div>

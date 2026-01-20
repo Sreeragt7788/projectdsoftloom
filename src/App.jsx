@@ -22,27 +22,20 @@ import PrivateRoute from "./Routes/PrivateRoute";
 function App() {
   return (
     <BrowserRouter>
-    <RegisterProvider>
-      <SearchProvider>
-        <CartProvider>
-          <LoginProvider>
-            
+      <RegisterProvider>
+        <SearchProvider>
+          <CartProvider>
+            <LoginProvider>
               <NavBar />
 
               <Routes>
-                <Route path="/" element={<Navigate to="/loginpage" />} />
+                {/* <Route path="/" element={<Navigate to="/loginpage" />} /> */}
+                <Route path="/" element={<ProductList />} />
+                <Route path="/products" element={<ProductList />} />
 
                 <Route path="/registerpage" element={<Register />} />
                 <Route path="/loginpage" element={<Login />} />
 
-                <Route
-                  path="/products"
-                  element={
-                    <PrivateRoute>
-                      <ProductList />
-                    </PrivateRoute>
-                  }
-                />
                 <Route path="/product/:id" element={<ProductDetails />} />
                 <Route path="/about" element={<About />} />
                 <Route
@@ -66,11 +59,10 @@ function App() {
               </Routes>
 
               <Footer />
-            
-          </LoginProvider>
-        </CartProvider>
-      </SearchProvider>
-    </RegisterProvider>
+            </LoginProvider>
+          </CartProvider>
+        </SearchProvider>
+      </RegisterProvider>
     </BrowserRouter>
   );
 }

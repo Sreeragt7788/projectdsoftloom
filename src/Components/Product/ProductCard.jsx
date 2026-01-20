@@ -1,10 +1,20 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
+import { LoginContext } from "../../Context/LoginContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
+  const {loggedInUser} =  useContext(LoginContext)
   const navigate = useNavigate();
+
+  const handleAddToCart =()=>{
+    if(!loggedInUser){
+      navigate("/loginpage")
+    }else{
+      addToCart(product)
+    }
+  }
 
   return (
     <div className="w-72 bg-white border border-gray-500 rounded-3xl transition-all duration-300 group overflow-hidden flex flex-col">
@@ -31,7 +41,7 @@ function ProductCard({ product }) {
         <h3 className="font-bold text-gray-900 text-md truncate mb-2">{product.title}</h3>
         
         <div className="mb-6">
-          <p className="text-2xl font-black text-gray-900">₹{product.price.toLocaleString('en-IN')}</p>
+          <p className="text-2xl font-black text-gray-900"> ${product.price.toLocaleString('en-IN')}</p>
           <p className={`text-[9px] font-bold mt-1 uppercase tracking-tighter ${product.stock < 10 ? 'text-orange-500' : 'text-green-600'}`}>
             {product.stock < 10 ? 'Limited Stock' : product.availabilityStatus}
           </p>
@@ -46,7 +56,7 @@ function ProductCard({ product }) {
             Details
           </button>
           <button
-            onClick={() => addToCart(product)}
+            onClick={handleAddToCart}
             className="flex-1 text-[10px] font-bold py-3 bg-orange-400 text-white rounded-xl transition uppercase tracking-widest shadow-lg shadow-blue-50"
           >
             Add to Cart

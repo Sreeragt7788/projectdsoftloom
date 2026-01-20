@@ -1,11 +1,29 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
+import { LoginContext } from "../Context/LoginContext";
 
 function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, buyNow } = useContext(CartContext);
+  const {loggedInUser} = useContext(LoginContext)
+  
+  const handleAddToCart =()=>{
+    if(!loggedInUser){
+      navigate("/loginpage")
+    }else{
+      addToCart(product)
+    }
+  }
+
+  const handleBuyNow =()=>{
+    if(!loggedInUser){
+      navigate("/loginpage")
+    }else{
+      addToCart(product)
+    }
+  }
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -85,10 +103,10 @@ function ProductDetails() {
             {/* Price */}
             <div className="mb-6">
               <p className="text-3xl font-bold text-gray-900">
-                ₹{product.price.toLocaleString("en-IN")}
+                 ${product.price.toLocaleString("en-IN")}
               </p>
               <p className="text-sm text-gray-500 line-through">
-                ₹{(product.price * 1.2).toFixed(0)}
+                 ${(product.price * 1.2).toFixed(0)}
               </p>
               <p className="text-sm text-green-600 font-medium">
                 {product.discountPercentage}% off
@@ -98,17 +116,14 @@ function ProductDetails() {
             {/* Action Buttons */}
             <div className="flex gap-4">
               <button
-                onClick={() => addToCart(product)}
+                onClick={handleAddToCart}
                 className="flex-1 border border-gray-300 py-3 rounded-lg font-medium hover:bg-gray-100"
               >
                 Add to Cart
               </button>
 
               <button
-                onClick={() => {
-                  addToCart(product);
-                  buyNow();
-                }}
+                onClick={handleBuyNow}
                 className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-500"
               >
                 Buy Now
