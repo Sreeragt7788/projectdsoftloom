@@ -1,17 +1,17 @@
 const NewProducts = [
   {
-    id: 101,
+    id: 191,
     title: "APPLE iPhone 17",
     description:
       "The Apple iPhone 17 delivers next-level performance with a stunning display, powerful processor, and advanced camera system.",
     category: "smartphones",
-    price: 566.27, // $ converted
+    price: 566.27,
     discountPercentage: 9.6,
     rating: 4.6,
     stock: 25,
     tags: ["smartphone", "apple", "iphone"],
     brand: "Apple",
-    sku: "APP-IP17-101",
+    sku: "APP-IP17-191",
     weight: 172,
     dimensions: { width: 7.2, height: 14.7, depth: 0.76 },
     warrantyInformation: "1 year manufacturer warranty",
@@ -38,7 +38,7 @@ const NewProducts = [
     thumbnail: "/Images/Iphone17.jpg",
   },
   {
-    id: 102,
+    id: 192,
     title: "Samsung Galaxy S25",
     description:
       "Samsung Galaxy S25 features a premium AMOLED display, high-resolution camera, and fast charging support.",
@@ -49,7 +49,7 @@ const NewProducts = [
     stock: 18,
     tags: ["smartphone", "samsung", "android"],
     brand: "Samsung",
-    sku: "SAM-S25-102",
+    sku: "SAM-S25-192",
     weight: 180,
     dimensions: { width: 7.4, height: 15.1, depth: 0.78 },
     warrantyInformation: "1 year brand warranty",
@@ -76,18 +76,18 @@ const NewProducts = [
     thumbnail: "/Images/Samsung25.jpeg",
   },
   {
-    id: 103,
+    id: 193,
     title: "Motorola Edge 50 Fusion",
     description:
       "Mid-range smartphone with clean Android experience, featuring a sleek design and vibrant OLED display.",
     category: "smartphones",
     brand: "Motorola",
-    price: 301.20,
+    price: 301.2,
     discountPercentage: 10.7,
     rating: 4.3,
     stock: 40,
     tags: ["smartphone", "motorola", "android"],
-    sku: "MOT-E50F-103",
+    sku: "MOT-E50F-193",
     weight: 175,
     dimensions: { width: 7.3, height: 15.0, depth: 0.79 },
     warrantyInformation: "1 year limited warranty",
@@ -114,7 +114,7 @@ const NewProducts = [
     thumbnail: "/Images/Motoedge.webp",
   },
   {
-    id: 104,
+    id: 194,
     title: "OnePlus Flagship",
     description:
       "Premium performance phone from OnePlus with Fluid AMOLED display and fast Oxygen OS.",
@@ -125,7 +125,7 @@ const NewProducts = [
     rating: 4.4,
     stock: 22,
     tags: ["smartphone", "oneplus", "android"],
-    sku: "ONE-FLG-104",
+    sku: "ONE-FLG-194",
     weight: 185,
     dimensions: { width: 7.5, height: 15.3, depth: 0.81 },
     warrantyInformation: "1 year brand warranty",
@@ -152,7 +152,7 @@ const NewProducts = [
     thumbnail: "/Images/oneplus.png",
   },
   {
-    id: 105,
+    id: 195,
     title: "MacBook Air M2",
     description:
       "The Apple MacBook Air powered by the M2 chip offers incredible speed and battery life in a thin design.",
@@ -163,7 +163,7 @@ const NewProducts = [
     rating: 4.8,
     stock: 12,
     tags: ["laptop", "apple", "macbook"],
-    sku: "APP-MBA-M2-105",
+    sku: "APP-MBA-M2-195",
     weight: 1240,
     dimensions: { width: 30.41, height: 21.5, depth: 1.13 },
     warrantyInformation: "1 year AppleCare",
@@ -190,7 +190,7 @@ const NewProducts = [
     thumbnail: "/Images/MacbookAir.jpg",
   },
   {
-    id: 106,
+    id: 196,
     title: "Sony DSLR",
     description:
       "Professional mirrorless DSLR camera with 4K video recording and high-speed autofocus.",
@@ -201,7 +201,7 @@ const NewProducts = [
     rating: 4.7,
     stock: 6,
     tags: ["camera", "sony", "dslr"],
-    sku: "SON-DSLR-106",
+    sku: "SON-DSLR-196",
     weight: 650,
     dimensions: { width: 12.5, height: 9.5, depth: 7.5 },
     warrantyInformation: "2 years Sony India warranty",
