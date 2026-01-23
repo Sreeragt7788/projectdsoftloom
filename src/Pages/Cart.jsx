@@ -7,31 +7,33 @@ import { NotificationContext } from "../Context/NotificationContext";
 function Cart() {
   const { cart, addItem, minusItem, removeItem, total, buyNow } =
     useContext(CartContext);
-  const {showSuccess,showError}=useContext(NotificationContext)
+
+  const { showSuccess, showError } = useContext(NotificationContext);
   const navigate = useNavigate();
- 
-  const handleAdd =(id)=>{
+
+  const handleAdd = (id) => {
     addItem(id);
-    showSuccess("Product added to cart")
-  }
+    showSuccess("Product added to cart");
+  };
 
-  const handleRemove=(id)=>{
+  const handleRemove = (id) => {
     removeItem(id);
-    showError("Product removed from cart")
-  }
+    showError("Product removed from cart");
+  };
 
-
- 
-
-  function handlePlaceOrder() {
+  const handlePlaceOrder = () => {
     const result = buyNow();
-    if (!result.success) return alert(result.message);
+    if (!result.success) {
+      showError(result.message);
+      return;
+    }
     navigate("/orderSuccess");
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
+        
         {/* Header */}
         <div className="bg-white rounded-2xl shadow-sm p-6 mb-6 border border-gray-200">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -55,7 +57,9 @@ function Cart() {
                 <h1 className="text-2xl font-bold text-gray-900">
                   Shopping Cart
                 </h1>
-                <p className="text-sm text-gray-600">{cart.length} Items</p>
+                <p className="text-sm text-gray-600">
+                  {cart.length} Items
+                </p>
               </div>
             </div>
 
@@ -67,10 +71,12 @@ function Cart() {
           </div>
         </div>
 
-        {/* Empty */}
+        {/* Empty Cart */}
         {cart.length === 0 && (
           <div className="bg-white rounded-2xl shadow-sm p-12 text-center border border-gray-200">
-            <h2 className="text-xl font-bold">Your Cart is Empty</h2>
+            <h2 className="text-xl font-bold text-gray-800">
+              Your Cart is Empty
+            </h2>
           </div>
         )}
 
@@ -87,17 +93,18 @@ function Cart() {
               />
             ))}
 
+            {/* Place Order */}
             <div className="flex justify-center mt-6">
               <button
                 onClick={handlePlaceOrder}
                 className="bg-linear-to-r from-black to-gray-800 
-               text-white px-10 py-4 rounded-2xl 
-               font-semibold text-lg shadow-lg 
-               hover:scale-105 transition-all duration-300"
+                text-white px-10 py-4 rounded-2xl 
+                font-semibold text-lg shadow-lg 
+                hover:scale-105 transition-all duration-300"
               >
                 PLACE ORDER —{" "}
                 <b className="text-green-400">
-                  ${Number((total * 1.18).toFixed(2)).toLocaleString("en-IN")}
+                  ${total.toLocaleString("en-IN")}
                 </b>
               </button>
             </div>

@@ -5,22 +5,19 @@ export const NotificationContext = createContext();
 export function NotificationProvider({ children }) {
   const [notification, setNotification] = useState(null);
 
-  // generic function (base)
   const showNotification = (type, message) => {
     setNotification({ type, message });
   };
 
-  // helper functions
   const showSuccess = (message) => showNotification("success", message);
   const showError = (message) => showNotification("error", message);
 
-  // auto hide notification
   useEffect(() => {
     if (!notification) return;
 
     const timer = setTimeout(() => {
       setNotification(null);
-    }, 500);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [notification]);
@@ -29,57 +26,63 @@ export function NotificationProvider({ children }) {
     <NotificationContext.Provider value={{ showSuccess, showError }}>
       {children}
 
-      {/* Notification Popup */}
+      {/* Toast */}
       {notification && (
-        <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-0">
+        <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
           <div
             className={`
-              max-w-[90%] sm:max-w-md w-full sm:w-auto
-              px-4 py-3 sm:px-6 sm:py-3
-              rounded-lg shadow-lg
+              flex items-center gap-3
+              px-5 py-3
+              rounded-full
+              backdrop-blur-xl
+              shadow-2xl
+              border border-white/30
               text-white text-sm sm:text-base
-              flex items-center gap-2
-              transition-all duration-300
+              animate-slideDown
               ${
                 notification.type === "success"
-                  ? "bg-green-500"
-                  : "bg-red-500"
+                  ? "bg-gradient-to-r from-emerald-500/90 to-green-600/90"
+                  : "bg-gradient-to-r from-rose-500/90 to-red-600/90"
               }
             `}
           >
-            
-            {notification.type === "success" ? (
-              <svg
-                className="w-5 h-5 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-5 h-5 shrink-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            )}
+            {/* Icon */}
+            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+              {notification.type === "success" ? (
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
+            </div>
 
-            
-            <span className="wrap-break-word">{notification.message}</span>
+            {/* Message */}
+            <span className="font-medium leading-snug text-center sm:text-left">
+              {notification.message}
+            </span>
           </div>
         </div>
       )}

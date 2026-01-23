@@ -4,12 +4,19 @@ import { NotificationContext } from "../../Context/NotificationContext";
 function CartItem({ item, remove, add, minus }) {
   const {showSuccess,showError}=useContext(NotificationContext)
 
-  const handleAddToCart=()=>{
+  const handleAddToCart = () => {
+    add();
+    showSuccess("Product quantity increased");
+  };
 
-  }
+  const handleRemoveFromCart = () => {
+    remove();
+    showError("Product removed from cart");
+  };
 
-  const handleRemoveFromCart=()=>{
-
+  const handleMinusCart=()=>{
+    minus();
+    showError("Product quantity decreased")
   }
 
   return (
@@ -50,7 +57,7 @@ function CartItem({ item, remove, add, minus }) {
         {/* Quantity Control – better touch & spacing */}
         <div className="flex items-center gap-4 bg-gray-50 border rounded-xl px-4 py-2">
           <button
-            onClick={minus}
+            onClick={handleMinusCart}
             className="w-8 h-8 flex items-center justify-center rounded-full border bg-white text-lg font-bold hover:bg-gray-100"
           >
             −
@@ -61,7 +68,7 @@ function CartItem({ item, remove, add, minus }) {
           </span>
 
           <button
-            onClick={add}
+            onClick={handleAddToCart}
             className="w-8 h-8 flex items-center justify-center rounded-full border bg-white text-lg font-bold hover:bg-gray-100"
           >
             +
@@ -78,7 +85,7 @@ function CartItem({ item, remove, add, minus }) {
 
         {/* Remove Button */}
         <button
-          onClick={remove}
+          onClick={handleRemoveFromCart}
           className="text-red-500 text-sm font-medium hover:underline self-start sm:self-end"
         >
           Remove
