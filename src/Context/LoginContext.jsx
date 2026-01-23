@@ -1,11 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { CartContext } from "./CartContext";
+import { createContext, useEffect, useState } from "react";
 
 export const LoginContext = createContext(null);
 
 export function LoginProvider({ children }) {
-  
-  
   const [loggedInUser, setLoggedInUser] = useState(() => {
     const savedUser = localStorage.getItem("userLogged");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -14,50 +11,42 @@ export function LoginProvider({ children }) {
   // persist login state
   useEffect(() => {
     if (loggedInUser) {
-      localStorage.setItem(
-        "userLogged",
-        JSON.stringify(loggedInUser)
-      );
+      localStorage.setItem("userLogged", JSON.stringify(loggedInUser));
     } else {
       localStorage.removeItem("userLogged");
     }
   }, [loggedInUser]);
 
   const login = (loginFormData) => {
-    // get all registered users
     const registeredUsers =
       JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
-    // find matching user
     const matchedRegisteredUser = registeredUsers.find(
-      (registeredUser) =>
-        registeredUser.email === loginFormData.email &&
-        registeredUser.password === loginFormData.password
+      (user) =>
+        user.email === loginFormData.email &&
+        user.password === loginFormData.password
     );
 
     if (!matchedRegisteredUser) {
-      alert("Invalid email or password");
-      return;
+      return false;
     }
 
-    // set logged in user
     setLoggedInUser({
       name: matchedRegisteredUser.name,
       email: matchedRegisteredUser.email,
       token: matchedRegisteredUser.token,
     });
+
+    return true;
   };
 
   const logout = () => {
-    
     setLoggedInUser(null);
-    localStorage.removeItem("loggedInUser")
+    localStorage.removeItem("userLogged");
   };
 
   return (
-    <LoginContext.Provider
-      value={{ loggedInUser, login, logout }}
-    >
+    <LoginContext.Provider value={{ loggedInUser, login, logout }}>
       {children}
     </LoginContext.Provider>
   );

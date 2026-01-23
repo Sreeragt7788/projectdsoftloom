@@ -2,11 +2,26 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import CartItem from "../Components/CartItems/CartItem";
 import { useNavigate } from "react-router-dom";
+import { NotificationContext } from "../Context/NotificationContext";
 
 function Cart() {
   const { cart, addItem, minusItem, removeItem, total, buyNow } =
     useContext(CartContext);
+  const {showSuccess,showError}=useContext(NotificationContext)
   const navigate = useNavigate();
+ 
+  const handleAdd =(id)=>{
+    addItem(id);
+    showSuccess("Product added to cart")
+  }
+
+  const handleRemove=(id)=>{
+    removeItem(id);
+    showError("Product removed from cart")
+  }
+
+
+ 
 
   function handlePlaceOrder() {
     const result = buyNow();
@@ -66,9 +81,9 @@ function Cart() {
               <CartItem
                 key={item.id}
                 item={item}
-                add={() => addItem(item.id)}
+                add={() => handleAdd(item.id)}
                 minus={() => minusItem(item.id)}
-                remove={() => removeItem(item.id)}
+                remove={() => handleRemove(item.id)}
               />
             ))}
 

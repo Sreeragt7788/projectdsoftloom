@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NotificationContext } from "../../Context/NotificationContext";
 
 function CartItem({ item, remove, add, minus }) {
+  const {showSuccess,showError}=useContext(NotificationContext)
+
+  const handleAddToCart=()=>{
+
+  }
+
+  const handleRemoveFromCart=()=>{
+
+  }
+
   return (
     <div className="bg-white border rounded-xl shadow-sm p-4 flex flex-col sm:flex-row gap-4">
       

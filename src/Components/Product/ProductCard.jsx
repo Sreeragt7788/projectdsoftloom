@@ -11,6 +11,7 @@ function ProductCard({ product }) {
   const handleAddToCart =()=>{
     if(!loggedInUser){
       navigate("/loginpage")
+      addToCart(product)
     }else{
       addToCart(product)
     }

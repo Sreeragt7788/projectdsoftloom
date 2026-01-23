@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 function Login() {
-  const { loginData, handleChange, handleSubmit } = useLoginForm();
+  const { loginData, handleChange, handleSubmit,handleLoggout } = useLoginForm();
   const emailRef = useRef(null);
 
 

@@ -2,18 +2,21 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { LoginContext } from "../Context/LoginContext";
+import { NotificationContext } from "../Context/NotificationContext";
 
 function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, buyNow } = useContext(CartContext);
   const {loggedInUser} = useContext(LoginContext)
+  const {showSuccess,showError}=useContext(NotificationContext)
   
   const handleAddToCart =()=>{
     if(!loggedInUser){
       navigate("/loginpage")
     }else{
       addToCart(product)
+      showSuccess("Product add to cart")
     }
   }
 

@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { LoginContext } from "../Context/LoginContext";
 import { useNavigate } from "react-router-dom";
+import { NotificationContext } from "../Context/NotificationContext";
 
 export function useLoginForm() {
-  const { login } =useContext(LoginContext)
-  const navigate=useNavigate()
+  const { showSuccess, showError } = useContext(NotificationContext);
+  const { login , logout } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -21,41 +23,43 @@ export function useLoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
-    const finalValidation = handleLoginValidation(loginData)
 
-    if(finalValidation !== true){
-        alert(finalValidation)
-        return
+    const validationResult = handleLoginValidation(loginData);
+
+    if (validationResult !== true) {
+      showError(validationResult);
+      return;
     }
-    
-    login(loginData)
-    
 
-    // reset
+    const isLoggedIn = login(loginData);
+
+    if (!isLoggedIn) {
+      showError("Invalid email or password");
+      return;
+    }
+
+    showSuccess("Login Successful");
+
     setLoginData({
       email: "",
       password: "",
     });
 
-    navigate("/products")
-    
+    navigate("/products");
   };
 
   const handleLoginValidation = (loginData) => {
-    //EMPTY EMAIL
     if (!loginData.email) return "Email is required";
 
-    //here @gmail.com must
     if (!loginData.email.endsWith("@gmail.com"))
-      return "enter must be a gmail address";
+      return "Email must be a Gmail address";
 
-    //go for password
     if (!loginData.password) return "Password is required";
 
     return true;
   };
 
+  
 
   return {
     loginData,

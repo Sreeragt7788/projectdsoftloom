@@ -1,9 +1,12 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { NotificationContext } from "./NotificationContext";
 
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
+  
+  const {showSuccess,showError}=useContext(NotificationContext)
   //initialize sat  from localStorage (already product saved in localStorage so here NO API call)
   const [cart, setCart] = useState(() => {
   try {
@@ -25,6 +28,7 @@ export function CartProvider({ children }) {
   function addToCart(item) {
     setCart((prev) => {
       const exist = prev.find((product) => product.id === item.id);
+      
 
       if (exist) {
         return prev.map((product) =>
@@ -36,6 +40,7 @@ export function CartProvider({ children }) {
 
       return [...prev, { ...item, quantity: 1 }];
     });
+    
   }
   
   function clearCart(){
@@ -52,6 +57,7 @@ export function CartProvider({ children }) {
           : item
       )
     );
+    showSuccess("Product added to cart");
   }
 
   
@@ -70,6 +76,8 @@ export function CartProvider({ children }) {
  
   function removeItem(id) {
     setCart((prev) => prev.filter((item) => item.id !== id));
+    showError("Product removed from cart");
+    
   }
 
   

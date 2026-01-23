@@ -18,14 +18,19 @@ import { LoginProvider } from "./Context/LoginContext";
 import { RegisterProvider } from "./Context/RegisterContext";
 
 import PrivateRoute from "./Routes/PrivateRoute";
+import { NotificationProvider } from "./Context/NotificationContext";
 
 function App() {
   return (
     <BrowserRouter>
+   
       <RegisterProvider>
         <SearchProvider>
+          <NotificationProvider>
           <CartProvider>
+             
             <LoginProvider>
+              
               <NavBar />
 
               <Routes>
@@ -33,7 +38,7 @@ function App() {
                 <Route path="/" element={<ProductList />} />
                 <Route path="/products" element={<ProductList />} />
 
-                <Route path="/registerpage" element={<Register />} />
+                <Route path="/registerpage" element={<Register />} /> 
                 <Route path="/loginpage" element={<Login />} />
 
                 <Route path="/product/:id" element={<ProductDetails />} />
@@ -59,10 +64,14 @@ function App() {
               </Routes>
 
               <Footer />
+             
             </LoginProvider>
+            
           </CartProvider>
+        </NotificationProvider>
         </SearchProvider>
       </RegisterProvider>
+       
     </BrowserRouter>
   );
 }
