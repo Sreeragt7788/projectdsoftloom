@@ -1,76 +1,52 @@
 import React, { useContext } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../Context/SearchContext";
 import { LoginContext } from "../../Context/LoginContext";
 import { CartContext } from "../../Context/CartContext";
-import { useLoginForm } from "../../CustomHooks/useLoginForm";
 import { NotificationContext } from "../../Context/NotificationContext";
 
 function NavBar() {
-  // search value and setter from SearchContext
   const { search, setSearch } = useContext(SearchContext);
-
-  // logged user details and logout function
-  const { loggedInUser , logout} = useContext(LoginContext);
-
-  const {showError}=useContext(NotificationContext)
-
-  // cart items and clear cart function
+  const { loggedInUser, logout } = useContext(LoginContext);
   const { cart, clearCart } = useContext(CartContext);
-
-  // used for navigation
+  const { showError } = useContext(NotificationContext);
   const navigate = useNavigate();
 
-  // used to get current path
-  const location = useLocation();
-
-  // logout button click
   const handleLogout = () => {
-    clearCart(); // clear cart items
-    logout(); // logout user
-    showError("You are successfully logged out")
-    navigate("/products"); // go to login page
+    clearCart();
+    logout();
+    showError("You are successfully logged out");
+    navigate("/products");
   };
 
   return (
     <nav className="w-full bg-white shadow-sm px-4 py-3">
       <div className="max-w-7xl mx-auto flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        {/* Logo section */}
+
+        {/* Logo */}
         <div className="flex justify-center md:justify-start">
           <Link to="/products" className="text-2xl font-bold text-indigo-600">
             ShopEasy
           </Link>
         </div>
 
-        {/* Search BOx AREA */}
+        {/* Search */}
         <div className="w-full md:max-w-md">
           <div className="flex items-center bg-gray-100 rounded-lg px-4 py-2">
             <input
               type="text"
               value={search}
-              onChange={(e) => setSearch(e.target.value)} 
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search products..."
               className="bg-transparent outline-none flex-1 text-sm"
             />
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-              />
-            </svg>
           </div>
         </div>
 
-        {/* Right side sectiona: home, cart and user  */}
+        {/* Navigation */}
         <div className="flex items-center justify-between md:justify-end gap-4">
-          
+
+          {/* HOME */}
           <Link
             to="/products"
             className="font-medium text-gray-700 hover:text-indigo-600"
@@ -78,16 +54,14 @@ function NavBar() {
             HOME
           </Link>
 
-          
-          <Link
-            to="/cart"
-            className="flex items-center gap-1 text-gray-700 hover:text-indigo-600 font-medium"
-          >
-            <div className="relative">
-              {/* Cart icon */}
+          {/* Right side (Cart + User) */}
+          <div className="flex items-center gap-4">
+
+            {/* Cart */}
+            <Link to="/cart" className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-6 h-6 text-gray-700"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="3"
@@ -100,40 +74,43 @@ function NavBar() {
                 />
               </svg>
 
-              {/* cart count */}
               {cart.length > 0 && (
                 <span className="absolute -top-2 right-0 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                   {cart.length}
                 </span>
               )}
-            </div>
-            <span className="hidden sm:inline">CART</span>
-          </Link>
+            </Link>
 
-          {/* user info */}
-          {loggedInUser ? (
-            <div className="flex items-center gap-2">
-              {/* first letter to Avatar icon */}
-              <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold uppercase">
-                {loggedInUser.name.charAt(0)}
+            {/* User */}
+            {loggedInUser ? (
+              <div className="flex items-center gap-2">
+                {/* Avatar */}
+                <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold uppercase">
+                  {loggedInUser.name.charAt(0)}
+                </div>
+
+                {/* Name (desktop only) */}
+                <span className="hidden md:inline text-sm font-medium text-gray-700">
+                  {loggedInUser.name}
+                </span>
+
+                {/* Logout */}
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-1.5 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
+                >
+                  Logout
+                </button>
               </div>
-
-              {/* user name showing */}
-              <span className="hidden sm:inline text-sm font-medium text-gray-700">
-                {loggedInUser.name}
-              </span>
-
-              {/* logout button */}
+            ) : (
               <button
-                onClick={handleLogout}
-                className="px-3 py-1.5 text-sm rounded-md bg-red-500 text-white hover:bg-red-600"
+                onClick={() => navigate("/loginpage")}
+                className="text-gray-700 font-medium"
               >
-                Logout
+                LOGIN
               </button>
-            </div>
-          ) : (
-            <button onClick={()=>navigate("/loginpage")} className="text-gray-700 font-medium">LOGIN</button>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </nav>
