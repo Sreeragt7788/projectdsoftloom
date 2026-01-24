@@ -42,7 +42,7 @@ function ProductCard({ product }) {
         <h3 className="font-bold text-gray-900 text-md truncate mb-2">{product.title}</h3>
         
         <div className="mb-6">
-          <p className="text-2xl font-black text-gray-900"> ${product.price.toLocaleString('en-IN')}</p>
+          <p className="text-2xl font-black text-gray-900"> ₹{product.price.toLocaleString('en-IN')}</p>
           <p className={`text-[9px] font-bold mt-1 uppercase tracking-tighter ${product.stock < 10 ? 'text-orange-500' : 'text-green-600'}`}>
             {product.stock < 10 ? 'Limited Stock' : product.availabilityStatus}
           </p>

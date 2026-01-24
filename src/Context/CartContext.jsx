@@ -94,7 +94,7 @@ export function CartProvider({ children }) {
       return { success: false, message: "Your cart is empty" };
     }
 
-    setCart([]);
+    // setCart([]);
     return { success: true, message: "Order placed successfully 🎉" };
   }
 
@@ -102,6 +102,7 @@ export function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cart,
+        setCart,
         addToCart,
         addItem,
         minusItem,

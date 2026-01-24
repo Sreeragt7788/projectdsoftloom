@@ -19,6 +19,9 @@ import { RegisterProvider } from "./Context/RegisterContext";
 
 import PrivateRoute from "./Routes/PrivateRoute";
 import { NotificationProvider } from "./Context/NotificationContext";
+import Checkout from "./Pages/Checkout";
+import Payment from "./Pages/Payment";
+
 
 function App() {
   return (
@@ -51,6 +54,8 @@ function App() {
                     </PrivateRoute>
                   }
                 />
+                <Route path="/checkout" element={<Checkout />}/>
+                <Route path="/paymentpage" element={<Payment />} />
                 <Route
                   path="/orderSuccess"
                   element={
@@ -63,7 +68,9 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
               </Routes>
 
+                    
               <Footer />
+              
              
             </LoginProvider>
             

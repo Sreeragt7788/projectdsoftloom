@@ -9,13 +9,13 @@ function NavBar() {
   const { search, setSearch } = useContext(SearchContext);
   const { loggedInUser, logout } = useContext(LoginContext);
   const { cart, clearCart } = useContext(CartContext);
-  const { showError } = useContext(NotificationContext);
+  const { showSuccess } = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     clearCart();
     logout();
-    showError("You are successfully logged out");
+    showSuccess("You are successfully logged out");
     navigate("/products");
   };
 

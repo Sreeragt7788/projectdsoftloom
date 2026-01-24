@@ -106,10 +106,10 @@ function ProductDetails() {
             {/* Price */}
             <div className="mb-6">
               <p className="text-3xl font-bold text-gray-900">
-                 ${product.price.toLocaleString("en-IN")}
+                 ₹{product.price.toLocaleString("en-IN")}
               </p>
               <p className="text-sm text-gray-500 line-through">
-                 ${(product.price * 1.2).toFixed(0)}
+                 ₹{(product.price * 1.2).toFixed(0)}
               </p>
               <p className="text-sm text-green-600 font-medium">
                 {product.discountPercentage}% off

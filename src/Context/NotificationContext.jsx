@@ -41,8 +41,8 @@ export function NotificationProvider({ children }) {
               animate-slideDown
               ${
                 notification.type === "success"
-                  ? "bg-gradient-to-r from-emerald-500/90 to-green-600/90"
-                  : "bg-gradient-to-r from-rose-500/90 to-red-600/90"
+                  ? "bg-linear-to-r from-emerald-500/90 to-green-600/90"
+                  : "bg-linear-to-r from-rose-500/90 to-red-600/90"
               }
             `}
           >

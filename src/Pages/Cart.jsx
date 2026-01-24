@@ -27,7 +27,8 @@ function Cart() {
       showError(result.message);
       return;
     }
-    navigate("/orderSuccess");
+    
+    navigate("/checkout")
   };
 
   return (
@@ -65,7 +66,7 @@ function Cart() {
 
             {cart.length > 0 && (
               <div className="text-xl font-bold text-gray-900">
-                ${total.toLocaleString("en-IN")}
+                ₹{total.toLocaleString("en-IN")}
               </div>
             )}
           </div>
@@ -102,10 +103,10 @@ function Cart() {
                 font-semibold text-lg shadow-lg 
                 hover:scale-105 transition-all duration-300"
               >
-                PLACE ORDER —{" "}
-                <b className="text-green-400">
-                  ${total.toLocaleString("en-IN")}
-                </b>
+                PROCEED TO CHECKOUT
+                {/* <b className="text-green-400">
+                  ₹{total.toLocaleString("en-IN")}
+                </b> */}
               </button>
             </div>
           </div>
