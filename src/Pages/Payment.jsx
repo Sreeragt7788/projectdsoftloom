@@ -101,7 +101,7 @@ function Payment() {
               onClick={handlePayment}
               className="w-full bg-blue-700 text-white py-5 rounded-2xl font-black text-lg tracking-widest hover:bg-blue-800 shadow-xl shadow-blue-100 transition-all active:scale-95 uppercase"
             >
-              Finish Order (₹{total})
+              Order Confirm (₹{total})
             </button>
           </div>
         </div>
