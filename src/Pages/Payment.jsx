@@ -89,7 +89,35 @@ function Payment() {
                     onChange={(e)=>setPaymentMethod(e.target.value)} 
                     className="w-5 h-5 accent-blue-600"
                   />
-                  <span className={`font-bold text-sm ${paymentMethod === "UPI" ? "text-blue-700" : "text-gray-600"}`}>UPI / ONLINE PAYMENT</span>
+                  <span className={`font-bold text-sm ${paymentMethod === "UPI" ? "text-blue-700" : "text-gray-600"}`}>UPI</span>
+                </div>
+              </label>
+
+              {/* UPI Option */}
+              <label className={`block p-5 rounded-2xl border-2 cursor-pointer transition-all ${paymentMethod === "UPI" ? "border-blue-600 bg-blue-50" : "border-gray-100 hover:border-gray-200"}`}>
+                <div className="flex items-center gap-4">
+                  <input 
+                    type="radio" 
+                    name="payment" 
+                    value="UPI" 
+                    onChange={(e)=>setPaymentMethod(e.target.value)} 
+                    className="w-5 h-5 accent-blue-600"
+                  />
+                  <span className={`font-bold text-sm ${paymentMethod === "UPI" ? "text-blue-700" : "text-gray-600"}`}>CREDIT CARD / DEBIT CARD</span>
+                </div>
+              </label>
+
+              {/* UPI Option */}
+              <label className={`block p-5 rounded-2xl border-2 cursor-pointer transition-all ${paymentMethod === "UPI" ? "border-blue-600 bg-blue-50" : "border-gray-100 hover:border-gray-200"}`}>
+                <div className="flex items-center gap-4">
+                  <input 
+                    type="radio" 
+                    name="payment" 
+                    value="UPI" 
+                    onChange={(e)=>setPaymentMethod(e.target.value)} 
+                    className="w-5 h-5 accent-blue-600"
+                  />
+                  <span className={`font-bold text-sm ${paymentMethod === "UPI" ? "text-blue-700" : "text-gray-600"}`}>NET BANKING</span>
                 </div>
               </label>
             </div>
