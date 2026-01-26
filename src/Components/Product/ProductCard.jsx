@@ -2,18 +2,22 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { LoginContext } from "../../Context/LoginContext";
+import { NotificationContext } from "../../Context/NotificationContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
   const {loggedInUser} =  useContext(LoginContext)
+  const {showSuccess,showError}=useContext(NotificationContext)
   const navigate = useNavigate();
 
   const handleAddToCart =()=>{
     if(!loggedInUser){
       navigate("/loginpage")
       addToCart(product)
+      showError("Please Login")
     }else{
       addToCart(product)
+      showSuccess("Product added to cart")
     }
   }
 

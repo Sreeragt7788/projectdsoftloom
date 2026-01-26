@@ -16,7 +16,7 @@ function ProductDetails() {
       navigate("/loginpage")
     }else{
       addToCart(product)
-      showSuccess("Product add to cart")
+      showSuccess("Product added to cart")
     }
   }
 

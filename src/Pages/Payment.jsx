@@ -16,9 +16,15 @@ function Payment() {
       showError("Please select a payment method!");
       return;
     }
-    localStorage.setItem("paidThrough", paymentMethod);
-    navigate("/orderSuccess");
+    const orderDetails = {
+        orderId: `#${Math.floor(Math.random()*100000)}`,
+        method:paymentMethod,
+        totalAmount:total,
+    }
+    localStorage.setItem("currentOrder",JSON.stringify(orderDetails));
     setCart([]);
+    navigate("/orderSuccess");
+    
   };
 
   return (
@@ -206,7 +212,7 @@ ${
               <label
                 className={`block p-5 rounded-2xl border-2 cursor-pointer transition-all 
 ${
-  paymentMethod === "NETBANKING"
+  paymentMethod === "NET BANKING"
     ? "border-blue-600 bg-blue-50"
     : "border-gray-100 hover:border-gray-200"
 }`}
@@ -221,7 +227,7 @@ ${
                   />
                   <span
                     className={`font-bold text-sm ${
-                      paymentMethod === "NETBANKING"
+                      paymentMethod === "NET BANKING"
                         ? "text-blue-700"
                         : "text-gray-600"
                     }`}

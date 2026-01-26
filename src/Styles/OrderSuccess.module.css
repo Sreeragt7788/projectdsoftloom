@@ -1,0 +1,127 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Fixed height */
+  background-color: #f4f7f6;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden; /* no Scroll effect */
+}
+
+.contentBox {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 380px; /* Alpam koodi compact aakki */
+  text-align: center;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.titleText {
+  font-size: 24px;
+  font-weight: 900 !important;
+  margin-bottom: 8px;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+
+.subText {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.detailsContainer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.detailsTitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center; /* Heading centeril mathi */
+}
+
+/* Row alignment */
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.label {
+  color: #777;
+  font-size: 13px;
+}
+
+.value {
+  color: #222;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.statusMessage {
+  margin-top: 15px;
+  color: #219653;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.footerText {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.buttonWrapper {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.actionButton {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  background: white;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.primaryButton {
+  background-color: #000;
+  color: white;
+  border: none;
+}
+
+.primaryButton:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 400px) {
+  .contentBox {
+    padding: 20px;
+  }
+  .titleText {
+    font-size: 20px;
+  }
+}
