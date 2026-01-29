@@ -2,15 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function Support() {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const handleToContact=()=>{
-        navigate("/contact")
-    }
+  const handleToContact = () => {
+    navigate("/contact");
+  };
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-indigo-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        
         <div className="text-center mb-16">
           <div className="mx-auto h-20 w-20 bg-indigo-100 rounded-3xl flex items-center justify-center mb-8">
             <svg
@@ -37,7 +36,6 @@ function Support() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-         
           <div className="group">
             <div className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 hover:border-indigo-100">
               <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-indigo-200 transition-colors">
@@ -127,21 +125,20 @@ function Support() {
           </div>
         </div>
 
-       
-
-       {/* Fixed Bottom CTA - 8*/}
-<div className="text-center mt-20 pt-12 border-t border-slate-200">
-  <h3 className="text-2xl font-bold text-slate-900 mb-4">
-    Still need help?
-  </h3>
-  <p className="text-lg text-slate-600 mb-8 max-w-md mx-auto">
-    Our team is here for you 24/7. Reach out anytime.
-  </p>
-  <button onClick={handleToContact} className="bg-black text-white px-12 py-5 rounded-3xl font-bold text-lg hover:bg-gray-800 hover:shadow-2xl  transition-all duration-300 shadow-xl">
-    Contact Support
-  </button>
-</div>
-
+        <div className="text-center mt-20 pt-12 border-t border-slate-200">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            Still need help?
+          </h3>
+          <p className="text-lg text-slate-600 mb-8 max-w-md mx-auto">
+            Our team is here for you 24/7. Reach out anytime.
+          </p>
+          <button
+            onClick={handleToContact}
+            className="bg-black text-white px-12 py-5 rounded-3xl font-bold text-lg hover:bg-gray-800 hover:shadow-2xl  transition-all duration-300 shadow-xl"
+          >
+            Contact Support
+          </button>
+        </div>
       </div>
     </div>
   );

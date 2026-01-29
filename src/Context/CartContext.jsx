@@ -7,6 +7,7 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   
   const {showSuccess,showError}=useContext(NotificationContext)
+ 
   //initialize sat  from localStorage (already product saved in localStorage so here NO API call)
   const [cart, setCart] = useState(() => {
   try {
@@ -89,7 +90,7 @@ export function CartProvider({ children }) {
   }, [cart]);
 
  
-  function buyNow() {
+ function buyNow() {
     if (cart.length === 0) {
       return { success: false, message: "Your cart is empty" };
     }

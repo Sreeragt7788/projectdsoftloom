@@ -15,7 +15,7 @@ function ProductList() {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_APP_URL}/products?limit=190`
+          `${import.meta.env.VITE_APP_URL}/products?limit=180`
         );
 
         const productsMerging = [

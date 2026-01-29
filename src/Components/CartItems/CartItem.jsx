@@ -51,10 +51,10 @@ function CartItem({ item, remove, add, minus }) {
         </div>
       </div>
 
-      {/* ===== IMPROVED BOTTOM SECTION ===== */}
+      
       <div className="flex sm:flex-col sm:items-end justify-between gap-4">
 
-        {/* Quantity Control – better touch & spacing */}
+        {/* Quantity Control */}
         <div className="flex items-center gap-4 bg-gray-50 border rounded-xl px-4 py-2">
           <button
             onClick={handleMinusCart}

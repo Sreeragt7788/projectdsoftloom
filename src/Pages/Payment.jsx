@@ -17,19 +17,17 @@ function Payment() {
       return;
     }
     const orderDetails = {
-        orderId: `#${Math.floor(Math.random()*100000)}`,
-        method:paymentMethod,
-        totalAmount:total,
-    }
-    localStorage.setItem("currentOrder",JSON.stringify(orderDetails));
+      orderId: `#${Math.floor(Math.random() * 100000)}`,
+      method: paymentMethod,
+      totalAmount: total,
+    };
+    localStorage.setItem("currentOrder", JSON.stringify(orderDetails));
     setCart([]);
     navigate("/orderSuccess");
-    
   };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 flex items-center justify-center">
-      {/* Main Grid Container */}
       <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Address Section */}
         <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col justify-between">
@@ -121,7 +119,7 @@ function Payment() {
 
             <div className="space-y-4">
               {/* COD Option */}
-              {/* COD */}
+
               <label
                 className={`block p-5 rounded-2xl border-2 cursor-pointer transition-all 
 ${
